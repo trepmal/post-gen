@@ -1,7 +1,24 @@
 <?php
-//Plugin Name: Post Generator
+/*
+ * Plugin Name: Post Gen
+ * Plugin URI: trepmal.com
+ * Description: Post generator.
+ * Version:
+ * Author: Kailey Lampert
+ * Author URI: kaileylampert.com
+ * License: GPLv2 or later
+ * License URI: http://www.gnu.org/licenses/gpl-2.0.html
+ * TextDomain: post-gen
+ * DomainPath:
+ * Network:
+ */
 
 
+/**
+ * Generate one post
+ *
+ * @return void
+ */
 function post_gen_create_post() {
 	$title = post_gen_get_random_title();
 	$args = array(
@@ -34,6 +51,13 @@ function post_gen_create_post() {
 	}
 }
 
+
+/**
+ * Generate multiple posts
+ *
+ * @param int $count Number posts to generate
+ * @return void
+ */
 function post_gen_create_posts( $count = 1 ) {
 	$counter = 1;
 	do {
@@ -43,6 +67,11 @@ function post_gen_create_posts( $count = 1 ) {
 
 }
 
+/**
+ * Get random title from title list
+ *
+ * @return void
+ */
 function post_gen_get_random_title() {
 	$titles = file_get_contents( plugin_dir_path(__FILE__) .'/lorem-titles.txt' );
 	$titles = explode( "\n", $titles );
@@ -51,6 +80,11 @@ function post_gen_get_random_title() {
 	return array_pop( $titles );
 }
 
+/**
+ * Get random content from paragraph list
+ *
+ * @return void
+ */
 function post_gen_get_random_content() {
 	$paras = file_get_contents( plugin_dir_path(__FILE__) .'/lorem-paragraphs.txt' );
 	$paras = explode( "\n", $paras );
@@ -61,6 +95,7 @@ function post_gen_get_random_content() {
 	return implode( "\n\n", $paras );
 }
 
+
 if ( defined('WP_CLI') && WP_CLI ) {
-        include plugin_dir_path( __FILE__ ) . '/post-gen-cli.php';
+	include plugin_dir_path( __FILE__ ) . '/post-gen-cli.php';
 }

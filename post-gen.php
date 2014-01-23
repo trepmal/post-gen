@@ -38,6 +38,7 @@ function post_gen_create_post() {
 			$image_title = _split_str_by_whitespace( $title, 30 );
 			$image_title = array_map( 'trim', $image_title );
 			// for generation, set lowgrey to 150 (same as highgrey default) to make solid images (because faster)
+			/// see https://github.com/trepmal/image-gen/blob/master/image-gen-cli.php for more args
 			$assoc_args = array( 'width' => 1000, 'height' => 800, 'text' => $image_title, 'lowgrey' => 150 );
 			$imageid = image_gen__create_image( $title, $assoc_args );
 			// make featured

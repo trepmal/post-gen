@@ -21,12 +21,17 @@
  */
 function post_gen_create_post() {
 	$title = post_gen_get_random_title();
+	$day = rand( 1, 100 );
+	$hour = rand( 1, 10 );
+	$date = date( 'Y-m-d H:i:s', strtotime( "-$day days -$hour hours" ) );
 	$args = array(
-		'post_type'    => 'post',
-		'post_status'  => 'publish',
-		'post_title'   => $title,
-		'post_content' => post_gen_get_random_content(),
-		'post_author'  => 1
+		'post_type'     => 'post',
+		'post_status'   => 'publish',
+		'post_title'    => $title,
+		'post_content'  => post_gen_get_random_content(),
+		'post_author'   => 1,
+		'post_date'     => $date,
+		'post_date_gmt' => $date,
 	);
 	$args = apply_filters( 'post_gen_args', $args );
 	$postid = wp_insert_post( $args );
@@ -43,10 +48,11 @@ function post_gen_create_post() {
 			$imageid = image_gen__create_image( $title, $assoc_args );
 			// make featured
 			set_post_thumbnail ( $postid, $imageid );
+
 			// attach to post
 			wp_update_post( array(
 				'ID'          => $imageid,
-				'post_parent' => $postid
+				'post_parent' => $postid,
 			) );
 		}
 	}

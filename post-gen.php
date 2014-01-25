@@ -26,8 +26,8 @@ function post_gen_create_post( $args = array() ) {
 		'noimage'      => 0,
 		'days-offset'  => array( 1, 300, 5 ),
 		'hours-offset' => array( 1, 24 ),
-		'img-height'   => 1000,
-		'img-width'    => 800,
+		'img-height'   => 800,
+		'img-width'    => 1000,
 		'img-lowgrey'  => 150,
 		'img-highgrey' => '',
 	);

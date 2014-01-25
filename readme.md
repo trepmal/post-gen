@@ -9,7 +9,7 @@ wp post-gen create <number>
 
 Includes text files with lorem ipsum for randomizing title and content. Image is generated, set as featured image, and attached to post. Image generated with post title.
 
-`create` is currently the only subcommand available, there are 4 options it always accepts. If Image Gen is available, you'll get *most* of those (numbers will work, text will not do as expected).
+`create` is currently the only subcommand available, there are 4 options it always accepts. If Image Gen is available, you'll get *most* of those options too (numbers will work, text will not do as expected, will fix after sleeeeeeeeeeep).
 
 ```
 SYNOPSIS

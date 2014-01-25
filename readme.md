@@ -16,12 +16,12 @@ SYNOPSIS
 
   wp post-gen create <count> [--paragraphs=<paragraphs>] [--noimage]
 [--days-offset=<days-offset>] [--hours-offset=<hours-offset>]
-[--img-height=<img-height>] [--img-lowgrey=<img-lowgrey>]
-[--img-highgrey=<img-highgrey>] [--img-alpha=<img-alpha>]
-[--img-blurintensity=<img-blurintensity>] [--img-filename=<img-filename>]
-[--img-text=<img-text>] [--img-linespacing=<img-linespacing>]
-[--img-textsize=<img-textsize>] [--img-font=<img-font>]
-[--img-fontcolor=<img-fontcolor>]
+[--img-width=<img-width>] [--img-height=<img-height>]
+[--img-lowgrey=<img-lowgrey>] [--img-highgrey=<img-highgrey>]
+[--img-alpha=<img-alpha>] [--img-blurintensity=<img-blurintensity>]
+[--img-filename=<img-filename>] [--img-text=<img-text>]
+[--img-linespacing=<img-linespacing>] [--img-textsize=<img-textsize>]
+[--img-font=<img-font>] [--img-fontcolor=<img-fontcolor>]
 
 If Image-Gen (https://github.com/trepmal/image-gen) is installed,
 all `wp image-gen create` options are accepted when prefixed with 'img-'
@@ -43,11 +43,14 @@ OPTIONS
   [--hours-offset=<hours-offset>]
     Number of hours in past to offset new posts or range, default 1,24
 
+  [--img-width=<img-width>]
+    Width for the image in pixels, default 1000
+
   [--img-height=<img-height>]
-    Height for the image in pixels, default 150
+    Height for the image in pixels, default 800
 
   [--img-lowgrey=<img-lowgrey>]
-    Lower grey value (0-255), default 120
+    Lower grey value (0-255), default 150
 
   [--img-highgrey=<img-highgrey>]
     Higher grey value (0-255), default 150
@@ -62,7 +65,7 @@ OPTIONS
     old value
 
   [--img-text=<img-text>]
-    Text to place on the image, default empty
+    Text to place on the image, default generated post title
 
   [--img-linespacing=<img-linespacing>]
     Linespacing in pixels, default 10
@@ -81,4 +84,5 @@ OPTIONS
 EXAMPLES
 
     wp post-gen create 10 --img-lowgrey=20,140 --img-highgrey=160,220 --img-width=1300
+
 ```

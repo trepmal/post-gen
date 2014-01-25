@@ -28,11 +28,14 @@ class Post_Gen_CLI extends WP_CLI_Command {
 	 * [--hours-offset=<hours-offset>]
 	 * : Number of hours in past to offset new posts or range, default 1,24
 	 *
+	 * [--img-width=<img-width>]
+	 * : Width for the image in pixels, default 1000
+	 *
 	 * [--img-height=<img-height>]
-	 * : Height for the image in pixels, default 150
+	 * : Height for the image in pixels, default 800
 	 *
 	 * [--img-lowgrey=<img-lowgrey>]
-	 * : Lower grey value (0-255), default 120
+	 * : Lower grey value (0-255), default 150
 	 *
 	 * [--img-highgrey=<img-highgrey>]
 	 * : Higher grey value (0-255), default 150
@@ -47,7 +50,7 @@ class Post_Gen_CLI extends WP_CLI_Command {
 	 * : old value
 	 *
 	 * [--img-text=<img-text>]
-	 * : Text to place on the image, default empty
+	 * : Text to place on the image, default generated post title
 	 *
 	 * [--img-linespacing=<img-linespacing>]
 	 * : Linespacing in pixels, default 10

@@ -72,7 +72,7 @@ function post_gen_create_post( $args = array() ) {
 			// if no highgrey, make the same as low. this will make the image solid and faster to generate
 			$img_args['highgrey'] = empty( $img_args['highgrey'] ) ? $img_args['lowgrey'] : $img_args['highgrey'];
 
-			$img_args['text'] = $image_title;
+			$img_args['text'] = empty( $img_args['text'] ) ? $image_title : $img_args['text'];
 
 			$imageid = image_gen__create_image( $title, $img_args );
 			// make featured

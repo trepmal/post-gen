@@ -80,5 +80,5 @@ OPTIONS
 
 EXAMPLES
 
-    wp post-gen create "CLI Image" --text="Fancy That" --width=400 --fontcolor=c0ffee
+    wp post-gen create 10 --url=vip.dev/robots --img-lowgrey=20,140 --img-highgrey=160,220 --img-width=1300
 ```

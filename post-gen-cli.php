@@ -66,7 +66,7 @@ class Post_Gen_CLI extends WP_CLI_Command {
  	 *
 	 * ## EXAMPLES
 	 *
-	 *     wp post-gen create "CLI Image" --text="Fancy That" --width=400 --fontcolor=c0ffee
+	 *     wp post-gen create 10 --img-lowgrey=20,140 --img-highgrey=160,220 --img-width=1300
 	 *
 	 */
 	public function create( $args = array(), $assoc_args = array() ) {

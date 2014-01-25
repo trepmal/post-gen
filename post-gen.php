@@ -67,6 +67,7 @@ function post_gen_create_post( $args = array() ) {
 			$image_title = _split_str_by_whitespace( $title, 30 );
 			$image_title = array_map( 'trim', $image_title );
 
+			// todo, only run this over integer vals
 			$img_args = array_map( 'post_gen_convert_to_value', $img_args );
 
 			// if no highgrey, make the same as low. this will make the image solid and faster to generate
@@ -82,6 +83,7 @@ function post_gen_create_post( $args = array() ) {
 			wp_update_post( array(
 				'ID'          => $imageid,
 				'post_parent' => $postid,
+				'post_content' => print_r( $img_args, true ),
 			) );
 		}
 	}
@@ -147,6 +149,8 @@ function post_gen_convert_to_value( $input ) {
 	if ( ! is_array( $input ) ) {
 		$input = explode( ',', $input );
 	}
+
+	$input = array_map( 'intval', $input );
 
 	// if a third param, assume last is incremental value
 	// get range, randomize, return

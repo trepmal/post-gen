@@ -80,5 +80,5 @@ OPTIONS
 
 EXAMPLES
 
-    wp post-gen create 10 --url=vip.dev/robots --img-lowgrey=20,140 --img-highgrey=160,220 --img-width=1300
+    wp post-gen create 10 --img-lowgrey=20,140 --img-highgrey=160,220 --img-width=1300
 ```

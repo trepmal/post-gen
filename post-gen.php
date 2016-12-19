@@ -23,6 +23,7 @@ function post_gen_create_post( $args = array() ) {
 
 	$defaults = array(
 		'post_type'    => 'post',
+		'post_status'  => 'publish',
 		'paragraphs'   => '4,7',
 		'noimage'      => 0,
 		'days-offset'  => array( 1, 300, 5 ),
@@ -51,7 +52,7 @@ function post_gen_create_post( $args = array() ) {
 
 	$post_args = array(
 		'post_type'     => $args['post_type'],
-		'post_status'   => 'publish',
+		'post_status'   => $args['post_status'],
 		'post_title'    => $title,
 		'post_content'  => post_gen_get_random_content( $args['paragraphs'] ),
 		'post_author'   => 1,

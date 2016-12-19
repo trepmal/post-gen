@@ -16,6 +16,9 @@ class Post_Gen_CLI extends WP_CLI_Command {
 	 * <count>
 	 * : Number of posts
 	 *
+	 * [--post_type=<post_type>]
+	 * : The type of the generated posts, default post
+	 *
 	 * [--paragraphs=<paragraphs>]
 	 * : Single number or range, default 4,7
 	 *

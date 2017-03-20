@@ -30,9 +30,15 @@ function post_gen_create_post( $args = array() ) {
 		'img-width'    => 1000,
 		'img-lowgrey'  => 150,
 		'img-highgrey' => '',
+		'post-type'    => 'post',
 	);
 
 	$args = wp_parse_args( $args, $defaults );
+	$post_type = sanitize_key( $args['post-type'] );
+
+	if ( ! post_type_exists( $post_type ) ) {
+		WP_CLI::error( sprintf( "'%s' is not a registered post type.", $post_type ) );
+	}
 
 	$img_args = array();
 	foreach( $args as $k => $v ) {
@@ -56,6 +62,7 @@ function post_gen_create_post( $args = array() ) {
 		'post_author'   => 1,
 		'post_date'     => $date,
 		'post_date_gmt' => $date,
+		'post_type'     => $post_type,
 	);
 	$post_args = apply_filters( 'post_gen_args', $post_args );
 	$postid = wp_insert_post( $post_args );

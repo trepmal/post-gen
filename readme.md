@@ -14,7 +14,7 @@ Includes text files with lorem ipsum for randomizing title and content. Image is
 ```
 SYNOPSIS
 
-  wp post-gen create <count> [--paragraphs=<paragraphs>] [--noimage]
+  wp post-gen create <count> [--post-type=<post-type>] [--paragraphs=<paragraphs>] [--noimage]
 [--days-offset=<days-offset>] [--hours-offset=<hours-offset>]
 [--img-width=<img-width>] [--img-height=<img-height>]
 [--img-lowgrey=<img-lowgrey>] [--img-highgrey=<img-highgrey>]
@@ -30,6 +30,9 @@ OPTIONS
 
   <count>
     Number of posts
+
+  [--post-type=<post-type>]
+    Post type, default 'post'
 
   [--paragraphs=<paragraphs>]
     Single number or range, default 4,7

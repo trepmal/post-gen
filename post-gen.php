@@ -34,8 +34,8 @@ function post_gen_create_post( $args = array() ) {
 		'img-highgrey' => '',
 	);
 
-	$args        = wp_parse_args( $args, $defaults );
-	$post_type   = sanitize_key( $args['post_type'] );
+	$args      = wp_parse_args( $args, $defaults );
+	$post_type = sanitize_key( $args['post_type'] );
 
 	if ( ! post_type_exists( $post_type ) ) {
 		WP_CLI::error( sprintf( "'%s' is not a registered post type.", $post_type ) );

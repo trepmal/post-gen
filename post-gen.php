@@ -32,18 +32,17 @@ function post_gen_create_post( $args = array() ) {
 		'img-width'    => 1000,
 		'img-lowgrey'  => 150,
 		'img-highgrey' => '',
-		'post-type'    => 'post',
 	);
 
-	$args = wp_parse_args( $args, $defaults );
-	$post_type = sanitize_key( $args['post-type'] );
+	$args        = wp_parse_args( $args, $defaults );
+	$post_type   = sanitize_key( $args['post_type'] );
 
 	if ( ! post_type_exists( $post_type ) ) {
 		WP_CLI::error( sprintf( "'%s' is not a registered post type.", $post_type ) );
 	}
 
 	$img_args = array();
-	foreach( $args as $k => $v ) {
+	foreach ( $args as $k => $v ) {
 		if ( strpos( $k, 'img-' ) === 0 ) {
 			$new_key = str_replace( 'img-', '', $k );
 			$img_args[ $new_key ] = $v;
@@ -52,19 +51,24 @@ function post_gen_create_post( $args = array() ) {
 	}
 
 	$title = post_gen_get_random_title();
-	$day = post_gen_convert_to_value( $args['days-offset'] );
-	$hour = post_gen_convert_to_value( $args['hours-offset'] );
-	$date = date( 'Y-m-d H:i:s', strtotime( "-$day days -$hour hours" ) );
+	$day   = post_gen_convert_to_value( $args['days-offset'] );
+	$hour  = post_gen_convert_to_value( $args['hours-offset'] );
+
+	$post_status = $args['post_status'];
+	if ( 'future' === $post_status ) {
+		$date = date( 'Y-m-d H:i:s', strtotime( "+$day days +$hour hours" ) );
+	} else {
+		$date = date( 'Y-m-d H:i:s', strtotime( "-$day days -$hour hours" ) );
+	}
 
 	$post_args = array(
-		'post_type'     => $args['post_type'],
-		'post_status'   => $args['post_status'],
+		'post_type'     => $post_type,
+		'post_status'   => $post_status,
 		'post_title'    => $title,
 		'post_content'  => post_gen_get_random_content( $args['paragraphs'] ),
 		'post_author'   => 1,
 		'post_date'     => $date,
 		'post_date_gmt' => $date,
-		'post_type'     => $post_type,
 	);
 	$post_args = apply_filters( 'post_gen_args', $post_args );
 	$postid = wp_insert_post( $post_args );
